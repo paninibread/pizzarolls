@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 10f;
-    public float rot = 10f;
+    public float rot = 65f;
     // Start is called before the first frame update
     void Start()
     {
