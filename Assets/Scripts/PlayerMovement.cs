@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 10f;
     public float rot = 65f;
+
+    public float G = 9.8f;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        transform.position += G * Time.deltaTime * -transform.up;
 
         if (Input.GetKey(KeyCode.W))
         {
