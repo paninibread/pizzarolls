@@ -2,165 +2,126 @@
     "name": "PlayerMovement",
     "maps": [
         {
-            "name": "Movement",
+            "name": "Movement Combat",
             "id": "6e4ad6d9-61b9-400f-b192-5dc743126bc1",
             "actions": [
                 {
-                    "name": "Forward",
-                    "type": "Button",
-                    "id": "d164e08b-0b1b-453c-a34c-158a0ddd93d8",
-                    "expectedControlType": "Button",
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "f9f5f70d-ffad-48e5-ae26-abbf7c82618d",
+                    "expectedControlType": "Dpad",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
-                    "name": "Backward",
-                    "type": "Button",
-                    "id": "bae23eb6-3170-42a2-93f2-fa4c1c7b0aca",
+                    "name": "Dash",
+                    "type": "Value",
+                    "id": "afc09772-62ce-45f3-97f3-a3eae7c18be2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Left",
-                    "type": "Button",
-                    "id": "a91b6044-3734-4ef6-a599-c544cf02026c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Right",
-                    "type": "Button",
-                    "id": "0135c480-461e-47c5-95c4-193a51b6bf29",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "d1c07129-5712-42ca-8cc7-2e3aa01e01d5",
+                    "name": "Dpad",
+                    "id": "0051cabc-b002-459b-b63f-f83ab9aa46c2",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "7879d9eb-f670-437b-80bc-eaa1a89ab9a5",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Forward",
+                    "groups": "Keyboard",
+                    "action": "Move",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "575ef7b7-b6f6-4a71-8151-7b3434cedb09",
-                    "path": "<Joystick>/stick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Forward",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "388debba-7aae-4a9c-8c6b-1c71a81e6e77",
+                    "name": "down",
+                    "id": "5eadc73e-23be-43c3-8395-fe49eaf09da0",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Backward",
+                    "groups": "Keyboard",
+                    "action": "Move",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "068886b0-8001-44e8-9b16-4d8c30940b5a",
-                    "path": "<Joystick>/stick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Backward",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4434923a-c3e7-4e79-bf2d-2e8228eb62cb",
+                    "name": "left",
+                    "id": "5071f775-160d-4b29-b756-5dd5c0803db4",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Left",
+                    "groups": "Keyboard",
+                    "action": "Move",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "b2c302ac-47a8-4232-8a7d-3d9c797a52d8",
-                    "path": "<Joystick>/stick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Left",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bb74c240-a383-4f3f-a27d-9afd3bad85ec",
+                    "name": "right",
+                    "id": "85842645-0a5b-4c81-98bc-367c136f2c5c",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Right",
+                    "groups": "Keyboard",
+                    "action": "Move",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
-                    "id": "e80a5459-76f9-4423-b3f7-4513e475882f",
-                    "path": "<Joystick>/stick/right",
+                    "id": "ab655f7f-51ad-4817-ac73-a8834c24ff31",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Right",
+                    "groups": "Keyboard",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
             ]
         },
         {
-            "name": "Combat",
-            "id": "17e0a775-b982-4082-99a4-d7c4176a67bb",
-            "actions": [
+            "name": "Menu",
+            "id": "39e40b1d-98e6-4613-995a-9868ca0efd3f",
+            "actions": [],
+            "bindings": []
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Keyboard",
+            "bindingGroup": "Keyboard",
+            "devices": [
                 {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "8d4537fd-3acd-4777-b82c-6f3e5fa0faf6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
                 }
-            ],
-            "bindings": [
+            ]
+        },
+        {
+            "name": "Controller",
+            "bindingGroup": "Controller",
+            "devices": [
                 {
-                    "name": "",
-                    "id": "6839bd92-7912-45c7-8bb6-bdf0678344a7",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
                 }
             ]
         }
-    ],
-    "controlSchemes": []
+    ]
 }
