@@ -1,38 +1,101 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.Windows;
 
 public class PlayerController : MonoBehaviour
 {
+    bool isWeaponAnimationPlaying;
+    private Animator animator;
+
+    private List<GameObject> recordedHits = new List<GameObject>();
+    private GameObject capturedHit;
+    private GameObject hitEnemy;
+
     public Rigidbody _rb;
+
     public float _speed;
     public float _turnSpeed;
-    //Vector2 moveVal2;
+
     Vector3 moveVal3;
+
     private bool canDash = true;
     private bool isDashing;
     public float dashingPower;
     public float dashingTime;
     public float dashingCooldown;
-    void Awake()
+
+    private void OnEnable()
     {
-        //actions = new PlayerMovement();
+        CombatSystemEventHandler.HitEvent += OnHitEvent;
+        CombatSystemEventHandler.BasicAttackAnimationState += OnBasicAttackAnimation;
+    }
+    private void OnDisable()
+    {
+        CombatSystemEventHandler.HitEvent -= OnHitEvent;
+        CombatSystemEventHandler.BasicAttackAnimationState -= OnBasicAttackAnimation;
+    }
+    void Start()
+    {
+        animator = GetComponentInChildren<Animator>();
     }
     void Update()
     {
         if (!isDashing)
         {
             Look();
-        }        
+        }
+        if (isWeaponAnimationPlaying)
+        {
+            RecordWeaponSensorHits();
+        }
     }
     void FixedUpdate()
     {
         if (!isDashing)
         {
             Move();
-        }        
+        }
+    }
+    private void RecordWeaponSensorHits()
+    {
+        hitEnemy = recordedHits.Find(x => x.gameObject.GetComponent<EnemyManager>());
+        if (hitEnemy)
+        {
+            hitEnemy.GetComponent<EnemyManager>().Damage(1);
+            isWeaponAnimationPlaying = false;
+            recordedHits.Clear();
+        }
+    }
+    private void OnHitEvent(GameObject sensorInfo)
+    {
+        capturedHit = sensorInfo.GetComponent<Sensors>().hit.collider.gameObject;
+        if (capturedHit.GetComponent<EnemyManager>() != null)
+        {
+            recordedHits.Add(capturedHit);
+        }
+    }
+    public void OnBasicAttack(InputValue value)
+    {
+        if(value.isPressed)
+        {
+            animator.SetTrigger("Attacking");
+        }
+    }
+    private void OnBasicAttackAnimation(bool state)
+    {
+        if (state)
+        {
+            CombatSystemEventHandler.TriggerStartSensors(true);
+            isWeaponAnimationPlaying = true;
+        }
+        else if (state == false)
+        {
+            CombatSystemEventHandler.TriggerStartSensors(false);
+            isWeaponAnimationPlaying = false;
+        }
     }
     void OnMove(InputValue value)
     {
@@ -42,7 +105,7 @@ public class PlayerController : MonoBehaviour
     }
     void OnDash()
     {
-        if(!isDashing && canDash)
+        if (!isDashing && canDash)
         {
             StartCoroutine(Dash());
         }
@@ -90,4 +153,5 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
+
 }

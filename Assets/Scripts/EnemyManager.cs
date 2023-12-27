@@ -23,7 +23,7 @@ public class EnemyManager : MonoBehaviour
     public void Damage(float dmg)
     {
         health -= dmg;
-
+        Debug.Log("Current Health: " + health);
         if(health <= 0)
         {
             gameObject.SetActive(false);
