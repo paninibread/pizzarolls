@@ -9,7 +9,7 @@
                     "name": "Move",
                     "type": "Value",
                     "id": "f9f5f70d-ffad-48e5-ae26-abbf7c82618d",
-                    "expectedControlType": "Dpad",
+                    "expectedControlType": "Stick",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -91,6 +91,17 @@
                 },
                 {
                     "name": "",
+                    "id": "4d05cc3c-e33a-4f2b-90c9-89048b312fd5",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "ab655f7f-51ad-4817-ac73-a8834c24ff31",
                     "path": "<Keyboard>/leftShift",
                     "interactions": "",
@@ -102,11 +113,33 @@
                 },
                 {
                     "name": "",
+                    "id": "2e2ae841-de3f-4164-bd94-5ea7a8d19742",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "a2f4d710-0971-46d9-ae23-b9a0c8e24bf2",
                     "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "BasicAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "40d68daa-ea12-4d34-8c56-97e15620734f",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
                     "action": "BasicAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
