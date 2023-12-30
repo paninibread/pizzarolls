@@ -4,26 +4,18 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    [Header("Tiles")]
+    public GameObject tileContainer;
+    public GameObject waterVolume;
     public Tile[] tileTypes;
     public int[,,] tiles;
     public GameObject[,,] tilesOnMap;
-    //[Header("Board Size")]
     int mapSizeX;
     int mapSizeY;
     int mapSizeZ;
-    public GameObject tileContainer;
-    // Start is called before the first frame update
     void Start()
     {
         generateMapInfo();
         generateMapVisuals();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     public void generateMapInfo()
     {
@@ -41,7 +33,20 @@ public class MapGenerator : MonoBehaviour
             { 
                 tiles[0, x, y] = 1; tiles[4, x, y] = 1; 
             }
-        
+
+        //water
+        for (x = mapSizeX/2; x < mapSizeX; x++) for (y = 0; y < mapSizeY; y++)
+            {
+                tiles[0, x, y] = 2;
+            }
+        for (x = 0; x < mapSizeX/2; x++) for (y = mapSizeY/2; y < mapSizeY; y++)
+            {
+                tiles[0, x, y] = 2;
+            }
+        for (x = 0+1; x < mapSizeX-1; x++) for (y = 0+1; y < mapSizeY-1; y++)
+            {
+                tiles[4, x, y] = 2;
+            }
     }
     public void generateMapVisuals()
     {
@@ -56,8 +61,10 @@ public class MapGenerator : MonoBehaviour
                     //newTile.GetComponent<Tile>().tileY = y;
                     //newTile.GetComponent<Tile>().tileZ = z;
                     newTile.GetComponent<Tile>().tileArrayPos = new Vector3(z, x, y);
+                    newTile.GetComponent<Tile>().tileType = index;
                     newTile.GetComponent<Tile>().map = this;
-                    newTile.transform.SetParent(tileContainer.transform);
+                    if (newTile.GetComponent<Tile>().tileType == 2) newTile.transform.SetParent(waterVolume.transform);
+                    else newTile.transform.SetParent(tileContainer.transform);
                     tilesOnMap[z, x, y] = newTile;                
                 }
     }

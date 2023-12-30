@@ -9,6 +9,7 @@ public class Tile : MonoBehaviour
     //public int tileZ;
     public Vector3 tileArrayPos;
     public GameObject tileVisualPrefab;
+    public int tileType;
     public float movementCost = 1;
     public bool isWalkable=true;
     public MapGenerator map;
