@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Move()
     {
-        _rb.MovePosition(transform.position + transform.forward * moveVal3.normalized.magnitude * _speed * Time.deltaTime);
+        _rb.MovePosition(transform.position + moveVal3.ToIso() * moveVal3.normalized.magnitude * _speed * Time.deltaTime);
     }
     private IEnumerator Dash()
     {
